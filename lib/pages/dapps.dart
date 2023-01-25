@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-class Swap extends StatefulWidget {
-  const Swap({Key? key}) : super(key: key);
+class Dapps extends StatefulWidget {
+  const Dapps({Key? key}) : super(key: key);
 
   @override
-  State<Swap> createState() => _SwapState();
+  State<Dapps> createState() => _DappsState();
 }
 
-class _SwapState extends State<Swap> {
+class _DappsState extends State<Dapps> {
   @override
   Widget build(BuildContext context) {
     return(
       Scaffold(body: Container(
         padding: const EdgeInsets.symmetric(vertical: 50),
-        child:const Text('Swap'),),)
+        child:const Text('Dapps'),),)
     );
   }
 }

@@ -11,8 +11,9 @@ import 'package:http/http.dart' as http;
 import 'package:mops_dapp/provider/user_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-String uri = 'http://192.168.43.34:3000';
+String uri = dotenv.env['SERVER_URL']!;
 
 class AuthService {
   void signUpUser({

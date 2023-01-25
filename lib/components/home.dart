@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mops_dapp/provider/user_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:mops_dapp/components/app_bar.dart';
+import 'package:mops_dapp/pages/setting.dart';
+import 'package:mops_dapp/pages/swap.dart';
+
+import '../pages/dapps.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';
@@ -20,23 +23,23 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  List<Widget> pages = const [
+    CustomAppBar(),
+    Dapps(),
+    Swap(),
+    Settings(),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserProvider>(context).user;
+    //final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            Text(
-              user.toJson(),
-            ),
-          ],
-        ),
-      ),
+      body: pages[page],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: page,
         selectedItemColor: Colors.blueAccent,
-        backgroundColor: Colors.black45,
+        unselectedItemColor: Colors.grey,
+        backgroundColor: Colors.blueGrey[600],
         iconSize: 28,
         onTap: onTap,
         elevation: 0,
@@ -53,10 +56,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 child: const Icon(
-                  Icons.home_outlined,
+                  Icons.account_balance_wallet_outlined,
                 ),
               ),
-              label: 'Home'),
+              label: 'Wallet'),
           BottomNavigationBarItem(
               icon: Container(
                 width: buttomBarWidth,
@@ -69,10 +72,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 child: const Icon(
-                  Icons.shopping_cart_outlined,
+                  Icons.webhook_outlined,
                 ),
               ),
-              label: 'Cart'),
+              label: 'Dapp'),
           BottomNavigationBarItem(
               icon: Container(
                 width: buttomBarWidth,
@@ -85,10 +88,26 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 child: const Icon(
-                  Icons.account_circle_outlined,
+                  Icons.token_outlined,
                 ),
               ),
-              label: 'Account'),
+              label: 'Swap'),
+          BottomNavigationBarItem(
+              icon: Container(
+                width: buttomBarWidth,
+                decoration: BoxDecoration(
+                  border: Border(
+                    top: BorderSide(
+                      color: page == 3 ? Colors.blueAccent : Colors.transparent,
+                      width: 2,
+                    ),
+                  ),
+                ),
+                child: const Icon(
+                  Icons.settings,
+                ),
+              ),
+              label: 'Settings'),
         ],
       ),
     );
