@@ -68,7 +68,15 @@ workflows:
 
       - name: Use system default keychain
 
-        script: |
+        script: |workflows:
+
+    sample-workflow:
+
+        name: Codemagic Sample Workflow
+
+        max_build_duration: 120
+
+        instance_type: mac_mini_m1
 
           keychain add-certificates
 
